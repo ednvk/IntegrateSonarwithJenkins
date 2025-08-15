@@ -46,17 +46,33 @@ Once the Instance is created, follow the steps below:
    
 ## Now set up the SonarQube in the Jenkins
 
-Before you set up, install Sonarqube in the Sonarqube server- Instance type t2.medium. it is mandatory.
+### Before you set up, install Sonarqube in the Sonarqube server- Instance type t2.medium. it is mandatory.
 
 ```
-sudo apt update
-sudo apt install unzip -y
-sudo apt install openjdk-21-jdk
 sudo su -
-adduser sonarqube //give password and your info
+
+adduser sonarqube >> give passwords and user info
+
+apt install unzip -y
+
+apt install openjdk-21-jre -y
+
 sudo su - sonarqube
+
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.8.0.112029.zip
-apt unzip 
+
+unzip sonarqube-25.8.0.112029.zip
+
+rm -rf sonarqube-25.8.0.112029.zip
+
+chmod -R 755 /home/sonarqube/sonarqube-25.8.0.112029/
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-25.8.0.112029/
+ll
+cd sonarqube-25.8.0.112029/bin/linux-x86-64/
+
+./sonar.sh start
+
+./sonar.sh status
 ```
    
 
