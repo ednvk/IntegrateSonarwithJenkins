@@ -1,0 +1,57 @@
+pipeline {
+  agent any
+
+  environment { PATH = "$PATH:/usr/share/maven/bin" }
+
+  stages {
+    stage('GetCode') {
+      steps {
+        deleteDir()
+        git branch: 'main', url: 'https://github.com/ednvk/JavaWebCalculator.git'
+      }
+    }
+
+    stage('Build') {
+      steps { sh 'mvn -B clean package' }
+    }
+
+    stage('SonarQube analysis') {
+      steps {
+        withSonarQubeEnv('Sonarqube-v25') {
+          sh '''
+            mvn -B clean verify sonar:sonar \
+              -Dsonar.host.url=$SONAR_HOST_URL \
+              -Dsonar.token=$SONAR_AUTH_TOKEN \
+              -Dsonar.projectKey=Maven-Build \
+              -Dsonar.projectName="Maven-Build" \
+              -Dsonar.sources=src/main/java,src/main/webapp \
+              -Dsonar.tests=src/test/java \
+              -Dsonar.java.binaries=target/classes \
+              -Dsonar.java.test.binaries=target/test-classes
+          '''
+        }
+      }
+    }
+
+    stage('Quality Gate') {
+      steps {
+        script {
+          def qg = waitForQualityGate() // blocks until SQ returns a result
+          echo "Quality Gate: ${qg.status}" // PASSED / FAILED / CANCELED / ERROR
+          if (!(qg.status in ['OK','PASSED'])) {
+            error "Quality Gate ${qg.status} — failing the build."
+          }
+          env.SONAR_QG = qg.status
+        }
+      }
+    }
+
+    stage('Deploy') {
+      when { expression { env.SONAR_QG in ['OK','PASSED'] } }
+      steps {
+        echo 'Deploying because Sonar Quality Gate PASSED…'
+        // deploy steps here
+      }
+    }
+  }
+}
