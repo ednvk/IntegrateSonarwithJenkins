@@ -2,7 +2,12 @@
 # Install Jenkins in AWS EC2 
 #### Note: Use instance type - t2.medium  
 Once the Instance is created, follow the steps below  
-    1. sudo apt update  
+    1. First update the system.   
+    
+        ```
+        sudo apt update
+        ```
+        
     2. install jenkins  
         
         ``` bash
