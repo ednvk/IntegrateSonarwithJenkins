@@ -87,8 +87,9 @@ Set up the Sonarqube credentials
 4. In J, go to manage Jenkins → system → SonarQube servers → Sonarqube-v25 to use a URL and Secret text credential containing a valid Sonar user token that you copied previously from the S server.
 5. In J, add the sonarScanner in the tools section. At the name params, use the same name(Sonarqube-v25) that you used in the Environment << SonarQube servers << System << Manage Jenkins.
 6. Now create a project in J server >> pipeline and use the below Groovy code to trigger the SonarScanner, which will check the code quality and vulnerabilities in your code.
-7. In S Server, go to Administration>> Configuration >> Webhook, provide the Jenkins URL trailing sonarqube-webhook
+7. In S Server, go to Administration>> Configuration >> Webhook, provide the Jenkins URL trailing sonarqube-webhook.  
    http://your-jenkins-ip:8080/sonarqube-webhook/
+8. Finally, click on Build Now on the Jenkins server  
 
 ```
 pipeline {
