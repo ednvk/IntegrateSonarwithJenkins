@@ -43,8 +43,20 @@ Once the Instance is created, follow the steps below:
 5. Copy the password into the Jenkins setup page.
 6. Install suggested plugins.
 7. Create your first Admin User.
+   
 ## Now set up the SonarQube in the Jenkins
 
-10. 
+Before you set up, install Sonarqube in the Sonarqube server- Instance type t2.medium. it is mandatory.
+
+```
+sudo apt update
+sudo apt install unzip -y
+sudo apt install openjdk-21-jdk
+sudo su -
+adduser sonarqube //give password and your info
+sudo su - sonarqube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.8.0.112029.zip
+apt unzip 
+```
    
 
