@@ -111,7 +111,7 @@ pipeline {
 
     stage('SonarQube analysis') {
       steps {
-        withSonarQubeEnv('sonarqube-25.8.0.112029') {
+        withSonarQubeEnv('Sonarqube-v25') {
           sh '''
             mvn -B clean verify sonar:sonar \
               -Dsonar.host.url=$SONAR_HOST_URL \
