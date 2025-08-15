@@ -7,6 +7,7 @@ Once the Instance is created, follow the steps below
         ```
         sudo apt update
         ```
+
         
     2. install jenkins  
         
