@@ -1,9 +1,9 @@
 # IntegrateSonarwithJenkins
 # Install Jenkins in AWS EC2 
-#### Note: Use instance type - t2.medium <br>
-Once the Instance is created, follow the steps below
-    1. sudo apt update
-    2. install jenkins
+#### Note: Use instance type - t2.medium  
+Once the Instance is created, follow the steps below  
+    1. sudo apt update  
+    2. install jenkins  
         
         ``` bash
         sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
