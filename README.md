@@ -27,7 +27,14 @@ Once the Instance is created, follow the steps below:
     sudo apt-get install jenkins
     ```
 
-3. use the ur IP address to browse the Jenkins server and port 8080 like below
-   http://<your-ec2-public-IP>:8080
+3. use the ur IP address to browse the Jenkins server and port 8080 like below  
+   http://your-ec2-public-IP:8080
+
+4. 
+5. adcas
+6. dfsdf
+7. efcadcf
+8. afcadc
+9. 
    
 
