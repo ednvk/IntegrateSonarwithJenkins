@@ -36,11 +36,15 @@ Once the Instance is created, follow the steps below:
 
    http://your-ec2-public-IP:8080
 
-4. 
-6. adcas
-7. dfsdf
-8. efcadcf
-9. afcadc
+4. Retrieve the initial admin password using the below command:  
+    ```
+   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+    ```
+5. Copy the password into the Jenkins setup page.
+6. Install suggested plugins.
+7. Create your first Admin User.
+## Now set up the SonarQube in the Jenkins
+
 10. 
    
 
